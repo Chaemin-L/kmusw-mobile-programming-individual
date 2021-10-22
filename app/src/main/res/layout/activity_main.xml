@@ -4,91 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="40dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/loginTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="185dp"
+        android:text="@string/login_name" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ID_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="215dp"
+        android:hint="@string/ID_input"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:ems="10"
+        android:hint="@string/PW_input"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
+
     <LinearLayout
-        android:layout_width="323dp"
-        android:layout_height="383dp"
-        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="171dp"
         android:orientation="vertical">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
-        <TextView
-            android:id="@+id/loginTxt"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:text="@string/login_name" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="22dp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ID_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/ID_input"
-            android:minHeight="48dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/PW_input"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:importantForAutofill="no" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp" />
 
         <Button
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="62dp"
             android:text="@string/loginBtn" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <LinearLayout
+        <Button
+            android:id="@+id/SignUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="@string/signUpBtn" />
 
-            <Button
-                android:id="@+id/SignUpBtn"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="@string/signUpBtn" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/withoutLoginBtn"
-                android:layout_width="150dp"
-                android:layout_height="48dp"
-                android:text="@string/guestLogin" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/withoutLoginBtn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:text="@string/guestLogin"
+            android:textColor="#878686" />
 
     </LinearLayout>
+
 </RelativeLayout>
