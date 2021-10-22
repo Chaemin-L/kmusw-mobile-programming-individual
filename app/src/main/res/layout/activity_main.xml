@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="323dp"
+        android:layout_height="383dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="150dp"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <TextView
+            android:id="@+id/loginTxt"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:text="@string/login_name" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="22dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ID_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ID_input"
+            android:minHeight="48dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/PW_input"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:importantForAutofill="no" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:text="@string/loginBtn" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/SignUpBtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/signUpBtn" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/withoutLoginBtn"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:text="@string/guestLogin" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
