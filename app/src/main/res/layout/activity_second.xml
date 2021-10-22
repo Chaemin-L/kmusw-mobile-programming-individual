@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="40dp"
-        android:paddingVertical="20dp">
+        android:paddingVertical="30dp">
 
         <TextView
             android:id="@+id/ID_txt"
@@ -149,10 +149,6 @@
             android:height="55dp"
             android:minHeight="48dp"
             android:text="@string/save" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="35dp" />
 
     </LinearLayout>
 
