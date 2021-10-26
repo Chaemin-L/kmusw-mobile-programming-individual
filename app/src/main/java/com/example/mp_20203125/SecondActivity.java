@@ -134,7 +134,7 @@ public class SecondActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "비밀번호를 다시 설정해주세요.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "회원가입을 위해서는 약관 동의는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "회원가입을 위해서 약관 동의는 필수입니다.", Toast.LENGTH_SHORT).show();
 
                 }
 
