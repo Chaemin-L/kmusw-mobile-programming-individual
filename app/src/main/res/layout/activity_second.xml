@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="40dp"
-    android:paddingVertical="30dp">
+    android:padding="30dp">
 
     <TextView
         android:id="@+id/ID_txt"
@@ -14,19 +13,27 @@
         android:layout_height="wrap_content"
         android:text="@string/ID_txt" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ID_input"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ID_input"
-        android:minHeight="48dp" />
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/checkID"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_gravity="end"
-        android:text="@string/checkID" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ID_input"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/ID_input"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/checkID"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:text="@string/checkID" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/PW_txt"
@@ -53,10 +60,6 @@
         android:text="@string/checkPW"
         android:visibility="invisible" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
     <TextView
         android:id="@+id/name_txt"
         android:layout_width="match_parent"
@@ -66,12 +69,9 @@
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:hint="@string/name_input"
         android:minHeight="48dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="22dp" />
 
     <TextView
         android:id="@+id/phone_txt"
@@ -81,19 +81,16 @@
         android:textColor="#757575" />
 
     <EditText
-        android:id="@+id/phone_input"
+        android:id="@+id/phoneNum_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:ems="10"
-        android:hint="@string/phone_input"
+        android:hint="@string/phoneNum_input"
         android:importantForAutofill="no"
         android:inputType="phone"
         android:minHeight="48dp"
         tools:ignore="TextContrastCheck" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="22dp" />
 
     <TextView
         android:id="@+id/address_txt"
@@ -105,15 +102,12 @@
         android:id="@+id/address_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="@string/address_input"
         android:importantForAutofill="no"
         android:inputType="textPostalAddress"
         android:minHeight="48dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="22dp" />
 
     <TextView
         android:id="@+id/agreement_txt"
@@ -124,7 +118,7 @@
     <TextView
         android:id="@+id/agreement_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/agreement_content" />
 
@@ -133,10 +127,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/agree" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
 
     <Button
         android:id="@+id/saveBtn"
