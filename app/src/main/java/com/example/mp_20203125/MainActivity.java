@@ -28,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         guestBtn = findViewById(R.id.withoutLoginBtn);
 
+        if(savedInstanceState == null){
+            SharedPreferences prefs = getSharedPreferences("member_info", 0);
+
+            String id = prefs.getString("tempID", "");
+            String pw = prefs.getString("tempPW", "");
+
+            ID.setText(id);
+            PW.setText(pw);
+        }
+
         signUpBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
             startActivity(intent);
@@ -64,4 +74,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    // 사용자의 마지막 입력 값 저장.
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences prefs = getSharedPreferences("member_info", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        String tempID = ID.getText().toString();
+        String tempPW = PW.getText().toString();
+        editor.putString("tempID", tempID);
+        editor.putString("tempPW", tempPW);
+        editor.apply();
+    }
+
+
 }

@@ -102,7 +102,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
         // 저장 버튼 클릭시 모든 조건을 만족했을때 저장하도록 하며,
-        // 그 외의 경우에는 어디에서 에러가 났는지 사용자에게 출력.
+        // 그 외의 경우에는 사용자에게 요구사항 출력.
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -118,7 +118,7 @@ public class SecondActivity extends AppCompatActivity {
                     String phoneNum = phoneNum_input.getText().toString();
 
 
-                    // 아이디의 값은 계정 마다 고유한 값을 가지므로
+                    // 아이디는 계정 마다 고유한 값을 가지므로
                     // 아이디를 기준으로 다른 정보들을 알 수 있도록 키를 설정
                     editor.putString(String.format("%s", ID ), ID);
                     editor.putString(String.format("%s_PW", ID ), PW);
