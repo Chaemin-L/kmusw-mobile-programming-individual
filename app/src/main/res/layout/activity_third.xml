@@ -64,4 +64,5 @@
         android:text="@string/profile"
         android:textColor="#757575"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
 </GridLayout>

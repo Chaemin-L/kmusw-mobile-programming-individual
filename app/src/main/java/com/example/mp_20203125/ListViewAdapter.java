@@ -1,5 +1,7 @@
 package com.example.mp_20203125;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,12 +44,12 @@ public class ListViewAdapter extends BaseAdapter {
         TextView name = view.findViewById(R.id.n1) ;
 
         ListItem item = list.get(pos);
-        img.setImageDrawable(item.getImage());
+        img.setImageBitmap(item.getImage());
         name.setText(item.getName());
 
         return view;
     }
-    public void addItem(Drawable img, String name) {
+    public void addItem(Bitmap img, String name) {
         ListItem item = new ListItem();
 
         item.setImage(img);

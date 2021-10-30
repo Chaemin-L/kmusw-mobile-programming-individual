@@ -24,9 +24,6 @@
         </activity>
         <activity android:name=".ThirdActivity"
             android:label="상품 목록" />
-        <activity android:name=".AddItemActivity"
-            android:label="이미지 선택"
-            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
     </application>
 
 </manifest>
