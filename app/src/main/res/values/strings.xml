@@ -27,6 +27,7 @@
         맞춤형 서비스를 위한 개인정보 수집 및 이용 약관에 동의하십니까?
     </string>
     <string name="agree">동의</string>
+    <string name="disagree">비동의</string>>
     <string name="save">저장</string>
 
     <!-- Third Activity -->

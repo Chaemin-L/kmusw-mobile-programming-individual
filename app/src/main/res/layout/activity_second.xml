@@ -123,11 +123,27 @@
         android:gravity="center_vertical"
         android:text="@string/agreement_content" />
 
-    <CheckBox
-        android:id="@+id/agreeBtn"
+    <RadioGroup
+        android:id="@+id/seletedAgree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/agree" />
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/agreeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/agree" />
+
+        <RadioButton
+            android:id="@+id/disagreeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/disagree" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/saveBtn"

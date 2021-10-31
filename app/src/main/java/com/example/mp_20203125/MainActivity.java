@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("#NOW#LOGIN", id);
                     editor.apply();
-                    // Third -> Second -> Main 순으로 온 건
+                    // Third -> Second -> Main으로 거쳐 왔다면
                     // finish()로 종결
                     if(getIntent().getBooleanExtra("flag", false)){
                         finish();
@@ -98,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
         String tempPW = PW.getText().toString();
         editor.putString("tempID", tempID);
         editor.putString("tempPW", tempPW);
-        if(prefs.contains("#NOW#LOGIN")){
-            editor.putString("#NOW#LOGIN", "");
-        }
         editor.apply();
     }
 

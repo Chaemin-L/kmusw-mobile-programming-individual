@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +26,7 @@ public class SecondActivity extends AppCompatActivity {
     boolean termsAgree = false;
 
     Button checkID, saveBtn;
-    CheckBox agree;
+    RadioGroup selectedAgree;
     EditText ID_input, PW_input, name_input, address_input, phoneNum_input;
     TextView checkPW;
 
@@ -42,7 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         name_input = findViewById(R.id.name_input);
         address_input = findViewById(R.id.address_input);
         phoneNum_input = findViewById(R.id.phoneNum_input);
-        agree = findViewById(R.id.agreeBtn);
+        selectedAgree = findViewById(R.id.seletedAgree);
         saveBtn = findViewById(R.id.saveBtn);
 
 
@@ -101,15 +103,29 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        // 선택된 라디오 버튼에 따른 약관 동의 여부 변수 termsAgree에 저장.
+        selectedAgree.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int selected) {
+                switch(selected){
+                    case R.id.agreeBtn:
+                        termsAgree = true;
+                        break;
+                    case R.id.disagreeBtn:
+                        termsAgree = false;
+                        break;
+                }
+            }
+        });
+
 
         // 저장 버튼 클릭시 모든 조건을 만족했을때 저장하도록 하며,
         // 그 외의 경우에는 사용자에게 요구사항 출력.
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                termsAgree = agree.isChecked();
                 if(idPass && pwPass && termsAgree){
-                    /* 사용자 입력값 저장 */
+                    // 사용자 입력값 저장
                     SharedPreferences prefs = getSharedPreferences("member_info",0);
                     SharedPreferences.Editor editor = prefs.edit();
                     String ID = ID_input.getText().toString();
@@ -150,4 +166,5 @@ public class SecondActivity extends AppCompatActivity {
 
 
     }
+
 }

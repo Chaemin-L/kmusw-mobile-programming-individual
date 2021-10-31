@@ -1,17 +1,13 @@
 package com.example.mp_20203125;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -46,15 +42,27 @@ public class ListViewAdapter extends BaseAdapter {
         TextView name = view.findViewById(R.id.n1) ;
 
         ListItem item = list.get(pos);
-        img.setImageBitmap(item.getImage());
+        if(item.getBitmapImage() == null){
+            img.setImageDrawable(item.getDrawableImage());
+        }else{
+            img.setImageBitmap(item.getBitmapImage());
+        }
         name.setText(item.getName());
 
         return view;
     }
-    public void addItem(Bitmap img, String name) {
+    public void addBitmapItem(Bitmap img, String name) {
         ListItem item = new ListItem();
 
-        item.setImage(img);
+        item.setBitmapImage(img);
+        item.setName(name);
+
+        list.add(item);
+    }
+    public void addDrawableItem(Drawable img, String name) {
+        ListItem item = new ListItem();
+
+        item.setDrawableImage(img);
         item.setName(name);
 
         list.add(item);

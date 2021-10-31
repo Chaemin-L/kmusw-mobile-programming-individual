@@ -1,25 +1,28 @@
 package com.example.mp_20203125;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-
-import java.net.URI;
 
 public class ListItem {
-    Bitmap image;
+    Bitmap bitmapImage;
+    Drawable drawableImage;
     String name;
 
-    public void setImage(Bitmap img) {
-        this.image = img;
+    public void setBitmapImage(Bitmap img) {
+        this.bitmapImage = img;
+    }
+    public void setDrawableImage(Drawable img) {
+        this.drawableImage = img;
     }
     public void setName(String name) {
         this.name = name;
     }
 
-    public Bitmap getImage() {
-        return this.image;
+    public Bitmap getBitmapImage() {
+        return this.bitmapImage;
+    }
+    public Drawable getDrawableImage() {
+        return this.drawableImage;
     }
     public String getName() {
         return this.name;
