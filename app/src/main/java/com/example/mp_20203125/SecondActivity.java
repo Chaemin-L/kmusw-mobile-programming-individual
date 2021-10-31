@@ -90,6 +90,8 @@ public class SecondActivity extends AppCompatActivity {
         checkID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 아이디에 빈 문자열 등록 방지
+                if(!ID_input.getText().toString().equals("")){
                     SharedPreferences prefs = getSharedPreferences("member_info",0);
                     if(prefs.contains(ID_input.getText().toString())){
                         Toast.makeText(getApplicationContext(), "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
@@ -99,6 +101,7 @@ public class SecondActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                         idPass = true;
                     }
+                }
 
             }
         });
