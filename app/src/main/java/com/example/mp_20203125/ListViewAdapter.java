@@ -6,9 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,6 @@ import java.util.ArrayList;
 public class ListViewAdapter extends BaseAdapter {
     ArrayList<ListItem> list = new ArrayList<>();
 
-    public ListViewAdapter(){ }
     public int getCount(){
         return list.size();
     }
@@ -56,6 +58,11 @@ public class ListViewAdapter extends BaseAdapter {
         item.setName(name);
 
         list.add(item);
+    }
+
+    public void deleteItem(int pos){
+        ListItem item = list.get(pos);
+        list.remove(item);
     }
 
 }

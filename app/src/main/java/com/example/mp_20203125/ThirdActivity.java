@@ -5,43 +5,45 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.io.InputStream;
 
-
 public class ThirdActivity extends AppCompatActivity {
 
     ActivityResultLauncher resultLauncher;
-
-    Button add, delete;
+    Button add, delete, profile;
     ListView listview;
     ListViewAdapter adapter;
     String name;
-    AlertDialog.Builder input;
+    AlertDialog.Builder input, info, signUp;
     EditText nameInput;
     Bitmap newImg;
-
     Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_third);
 
         add = findViewById(R.id.addItemBtn);
         delete = findViewById(R.id.delItemBtn);
-
+        profile = findViewById(R.id.profileBtn);
 
         listview = findViewById(R.id.itemList);
         adapter = new ListViewAdapter();
@@ -57,11 +59,41 @@ public class ThirdActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         name = nameInput.getText().toString();
                         adapter.addItem(newImg, name);
+                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        dialog.dismiss();
+                    }
+                });
+        info = new AlertDialog.Builder(ThirdActivity.this)
+                .setTitle("회원 정보")
+                .setNegativeButton("닫기", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+        signUp = new AlertDialog.Builder(ThirdActivity.this)
+                .setTitle("회원가입")
+                .setMessage("회원가입하시겠습니까?")
+                .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        // Third -> Second(회원가입) -> Main Activity에 이르기까지
+                        // startActivity에 따른 Activity 엉킴을 방지하기 위해,
+                        // 초기 Main Activity와 다르게 flag 값을 intent로 보내어 구분
+                        Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                        intent.putExtra("flag", true);
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
                     }
                 });
 
@@ -93,7 +125,44 @@ public class ThirdActivity extends AppCompatActivity {
                 thread.start();
             }
         });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cnt, checked;
+                cnt = adapter.getCount();
 
+                if(cnt>0){
+                    checked = listview.getCheckedItemPosition();
+
+                    if(checked > -1 && checked < cnt){
+                        adapter.deleteItem(checked);
+                        listview.clearChoices();
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                SharedPreferences prefs = getSharedPreferences("member_info",0);
+                String loginID = prefs.getString("#NOW#LOGIN", "");
+                if(loginID.equals("")){
+                    AlertDialog dialog = signUp.create();
+                    dialog.show();
+                }else {
+                    String name = "이름: " + prefs.getString(loginID+"_name","");
+                    String id = "아이디: " + prefs.getString(loginID,"");
+                    String pw = "비밀번호: " + prefs.getString(loginID+"_PW","");
+                    String address = "주소: " + prefs.getString(loginID+"_address","");
+                    String phoneNum = "휴대폰 번호: " + prefs.getString(loginID+"_phoneNum","");
+                    info.setMessage(name+"\n"+id+"\n"+pw+"\n"+address+"\n"+phoneNum);
+                    AlertDialog dialog = info.create();
+                    dialog.show();
+
+                }
+            }
+        });
 
         resultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),

@@ -57,8 +57,14 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("#NOW#LOGIN", id);
                     editor.apply();
-                    Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
-                    startActivity(intent);
+                    // Third -> Second -> Main 순으로 온 건
+                    // finish()로 종결
+                    if(getIntent().getBooleanExtra("flag", false)){
+                        finish();
+                    } else{
+                        Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                        startActivity(intent);
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "아이디와 비밀번호가 일치하지 않습니다.", LENGTH_SHORT).show();
                     }
@@ -69,6 +75,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         guestBtn.setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences("member_info", 0);
+            SharedPreferences.Editor editor = prefs.edit();
+            if(prefs.contains("#NOW#LOGIN")){
+                editor.remove("#NOW#LOGIN");
+                editor.apply();
+            }
             Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
             startActivity(intent);
         });
@@ -86,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         String tempPW = PW.getText().toString();
         editor.putString("tempID", tempID);
         editor.putString("tempPW", tempPW);
+        if(prefs.contains("#NOW#LOGIN")){
+            editor.putString("#NOW#LOGIN", "");
+        }
         editor.apply();
     }
 
