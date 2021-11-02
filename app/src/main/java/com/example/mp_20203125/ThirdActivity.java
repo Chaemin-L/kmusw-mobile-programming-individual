@@ -5,9 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,13 +15,13 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.io.InputStream;
+
 
 public class ThirdActivity extends AppCompatActivity {
 
@@ -35,8 +33,6 @@ public class ThirdActivity extends AppCompatActivity {
     AlertDialog.Builder input, info, signUp;
     EditText nameInput;
     Bitmap newImg;
-    ViewGroup parentView; //
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +50,6 @@ public class ThirdActivity extends AppCompatActivity {
 
         // 상품 추가시 사용자로부터 입력받을 입력 Dialog: input
         nameInput = new EditText(getApplicationContext());
-        parentView= (ViewGroup) nameInput.getParent();
         input = new AlertDialog.Builder(ThirdActivity.this)
                 .setTitle("상품 이름")
                 .setMessage("등록할 상품의 이름을 입력해주세요.")
@@ -73,6 +68,7 @@ public class ThirdActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+
         // 회원 정보를 띄울 Dialog: info
         info = new AlertDialog.Builder(ThirdActivity.this)
                 .setTitle("회원 정보")
@@ -82,6 +78,7 @@ public class ThirdActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+
         // 비회원이 회원정보 클릭시 회원가입 희망 유무를 질의할 Dialog: signUp
         signUp = new AlertDialog.Builder(ThirdActivity.this)
                 .setTitle("회원가입")
@@ -118,7 +115,7 @@ public class ThirdActivity extends AppCompatActivity {
             public void onClick(View view) {
                 newImg = null; name = null;
                 // 갤러리로 이동하기 전에 상품 이름을 요청하는 Dialog가 뜨는 걸 방지하기 위해
-                // Handler의 postDelayed 이용하여 갤러리가 열리기까지의 지연 시간을 부여.
+                // Handler의 postDelayed() 이용하여 갤러리가 열리기까지의 지연 시간을 부여.
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 resultLauncher.launch(intent);

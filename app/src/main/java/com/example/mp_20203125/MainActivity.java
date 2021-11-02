@@ -1,15 +1,14 @@
 package com.example.mp_20203125;
 
 import static android.widget.Toast.LENGTH_SHORT;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 

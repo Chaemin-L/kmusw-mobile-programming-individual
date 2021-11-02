@@ -130,14 +130,14 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/agreeBtn"
+            android:id="@+id/acceptBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/agree" />
 
         <RadioButton
-            android:id="@+id/disagreeBtn"
+            android:id="@+id/declineBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
