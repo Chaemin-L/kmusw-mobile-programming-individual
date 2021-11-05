@@ -1,2 +1,30 @@
-## Mobile Programming
-Individual assignment using Android Studio
+# Mobile Programming
+Individual project for Mobile Programming<br>
+국민대 소프트웨어학부 20203125 이채민
+<br>
+
+
+## Development Environment
+Android Studio, Android 11 (R)
+<br>
+
+## Features
+1. 회원가입
+	- 중복 아이디 생성 제한
+	- 비밀번호는 8자 이상, 특수기호 포함 판별 기능 구현
+ 	- 비밀번호는 사용자의 입력에 따라 실시간으로 요구사항 출력
+	- 정보동의 약관 비동의시, 가입 불허
+	- 회원 가입 조건을 채우지 못한 경우, 사용자에게 해당 부분에 대한 문구 출력
+<br>
+1. 로그인
+	- 로그인 시도 시, 아이디와 비밀번호 각각의 존재 유무에 따라 다른 메시지 출력
+	(아이디X : "존재하지 않는 계정", 비밀번호X: "아이디와 비밀번호 불일치")
+	- 로그인된 사용자를 감지하여, 회원정보 출력 가능
+<br>
+1. 상품 리스트
+	- 상품이미지와 이름을 별도로 재정의한 ListView 형식으로 출력
+	- app/res/drawable에 존재하는 5개의 이미지가 기본 출력
+	- 갤러리의 사진 선택 후 간단한 Dialog를 통해 상품 이름을 입력받아 상품 등록 
+	- 상품 선택 후 삭제 가능, 이때 다중 선택은 불허
+
+1. 프로그램 종료시, 마지막에 작성했던 로그인 화면에 입력된 내용 저장, 추후 재접속시 defalut로 채워짐
